@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.19)
 set(PROJECT_NAME "Foo")
 set(CXX_STANDARD 17)
-set(CMAKE_BUILD_TYPE Release)
-project(${PROJECT_NAME})
+set(CMAKE_BUILD_TYPE Release)  
 
+
+project(${PROJECT_NAME})
 
 include_directories("include")
 
+if(WIN32)
+message(STATUS "detected windows")
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+set(BUILD_SHARED_LIBS TRUE)
+endif()
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
@@ -21,3 +27,4 @@ add_library(${PROJECT_NAME}_static STATIC foo.cpp)
 
 #add dynamic library
 add_library(${PROJECT_NAME}_shared SHARED foo.cpp)
+
