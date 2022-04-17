@@ -1,0 +1,7 @@
+.*/
+.*
+build/
+ModelFoo/build/
+
+bin/
+ModelFoo/libs/
